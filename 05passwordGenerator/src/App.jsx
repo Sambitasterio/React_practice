@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useEffect,useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -24,7 +24,9 @@ function App() {
 
   },[length,numberAllowed,charAllowed,setpassword]) 
 
-  
+  useEffect(() => {
+    passwordGenerator()
+  },[length,numberAllowed,charAllowed,passwordGenerator])
 
   return (
     <>
@@ -38,7 +40,7 @@ function App() {
         </div>
         <div className = "flex text-s, gap-x-2">
           <div className = "flex items-center gap-x-1">
-            <input type = "range" min = {8} max = {50} value = {length} className = "cursor-pointer" onChange = {(e) => {setLength(e.target.value)}} />
+            <input type = "range" min = {8} max = {50} value = {length} className = "cursor-pointer" onChange = {(e) => {setlength(e.target.value)}} />
             <label>Length:{length}</label>
           </div>
           <div className = "flex items-center gap-x-1">
